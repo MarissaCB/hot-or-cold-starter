@@ -12,6 +12,7 @@ var answer = Math.floor((Math.random() * 100) + 1);
 /*--- User entries box ---*/
 var userGuess;
 
+
 	$("#guessButton").on("click", function(e){
 		console.log(answer);
 	var userGuess = $("#userGuess").val();	
@@ -20,17 +21,24 @@ var userGuess;
 	if (userGuess == answer) { 
 		$("h2").text("You Got It!");
 }
-	else if (Math.abs(answer - userGuess) < 10) {
+	else if (Math.abs(answer - userGuess) <= 5) {
+		$("h2").text("Totally Hot");
+}
+
+	else if (Math.abs(answer - userGuess) <= 10) {
 		$("h2").text("Hot");
 }
 
-/*--- To get warm response
-	else if (Math.abs(answer - userGuess) > 11 && < 20) {
-		$("h2").text("Kinda Hot");
-}	---*/	
+	else if (Math.abs(answer - userGuess) <= 25) {
+		$("h2").text("Warm");
+}		
+
+	else if (Math.abs(answer - userGuess) <= 50) {
+		$("h2").text("Cold");
+}
 
 	else {
-		$("h2").text("Cold");
+		$("h2").text("Freezing Cold");
 }
 	e.preventDefault();
 });
@@ -47,7 +55,7 @@ var userGuess;
 	$("#userGuess").val("");
 	$("h2").text("Make your Guess!");
 
- })
+ });
 
 	
 /*--- Display information modal box ---*/
